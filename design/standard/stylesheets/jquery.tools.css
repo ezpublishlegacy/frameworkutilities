@@ -1,0 +1,102 @@
+/********************************************************************************
+* jQuery TOOLS Design Styles
+*
+* Table of Contents
+	scrollable
+	demos
+		scrollable
+
+********************************************************************************/
+
+/*********************
+  scrollable
+*********************/
+.items > *,.items .item-base{
+	display:inline-block;
+	vertical-align:middle;
+}
+.items > .item-group{
+	text-align:center;
+}
+.scrollable{
+	display:inline-block;
+	overflow:hidden;
+	position:relative;
+	vertical-align:middle;
+}
+.scrollable img{
+	vertical-align:middle;
+}
+.scrollable .active{
+	border-color:#000000;
+	cursor:default;
+}
+.scrollable .items{
+	position:absolute;
+	width:19500px;
+}
+.scrollable-browse{
+	cursor:pointer;
+	display:inline-block;
+	margin:0;
+	padding:0;
+	vertical-align:middle;
+}
+
+
+/*********************
+  demos
+*********************/
+
+/*====== scrollable ======*/
+#demo-scrollable,#demo-scrollable1{
+	margin:10px 0;
+	width:700px;
+}
+#demo-scrollable .scrollable,#demo-scrollable1 .scrollable{
+	background:#ffffff url(http://static.flowplayer.org/img/global/gradient/h300.png) repeat-x;
+	border:1px solid #cccccc;
+	height:101px;
+	width:630px;
+}
+#demo-scrollable .items > .item-group{
+	width:630px;
+}
+#demo-scrollable .scrollable .item-base,#demo-scrollable1 .scrollable .item-base{
+	background-color:#ffffff;
+	border:1px solid #cccccc;
+	height:75px;
+	margin:10px 8px;
+	padding:2px;
+	width:100px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
+#demo-scrollable1 .scrollable .item-base{
+	margin:10px;
+}
+#demo-scrollable a.scrollable-browse,#demo-scrollable1 a.scrollable-browse{
+	background:url(http://static.flowplayer.org/tools/img/scrollable/arrow/hori_large.png) no-repeat;
+	font-size:1px;
+	height:30px;
+	width:30px;
+}
+#demo-scrollable a.right,#demo-scrollable1 a.right{
+	background-position:0 -30px;
+}
+#demo-scrollable a.right:hover,#demo-scrollable1 a.right:hover{
+	background-position:-30px -30px;
+}
+#demo-scrollable a.right:active,#demo-scrollable a.right.disabled,#demo-scrollable1 a.right:active,#demo-scrollable1 a.right.disabled{
+	background-position:-60px -30px;
+}
+#demo-scrollable a.left,#demo-scrollable1 a.left{
+}
+#demo-scrollable a.left:hover,#demo-scrollable1 a.left:hover{
+	background-position:-30px 0;
+}
+#demo-scrollable a.left:active,#demo-scrollable a.left.disabled,#demo-scrollable1 a.left:active,#demo-scrollable1 a.left.disabled{
+	background-position:-60px 0;
+}
+
+
