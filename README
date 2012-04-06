@@ -5,3 +5,7 @@
 = Description
 --------------------------------------------------------------------------------------------
 Framework Utilities is an extension that provides the base set of files that can be used on any site even if the site does not implement framework in the design structure.
+
+= Dependencies
+--------------------------------------------------------------------------------------------
+There are no dependencies.
