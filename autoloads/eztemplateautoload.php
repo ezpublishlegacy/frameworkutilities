@@ -25,4 +25,10 @@ if(!function_exists('array_key_pascal_case')){
 	}
 }
 
+if(!function_exists('array_extract_key')){
+	function array_extract_key($array, $keys){
+		return array_intersect_key($array, array_flip($keys));
+	}
+}
+
 ?>
