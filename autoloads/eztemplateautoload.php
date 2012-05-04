@@ -8,4 +8,12 @@ if(!function_exists('array_remove')){
 	}
 }
 
+if(!function_exists('array_swap')){
+	function array_swap(&$array, $key1, $key2, $value=null){
+		$Value = $array[$key1];
+		$array[$key1] = $value!==null ? $value : $array[$key2];
+		$array[$key2] = $Value;
+	}
+}
+
 ?>
