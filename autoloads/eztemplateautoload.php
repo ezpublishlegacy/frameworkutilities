@@ -16,4 +16,13 @@ if(!function_exists('array_swap')){
 	}
 }
 
+if(!function_exists('array_key_pascal_case')){
+	function array_key_pascal_case(&$array){
+		foreach($array as $Key=>$Value){
+			$array[str_replace(' ', '', ucwords(str_replace('_', ' ', $Key)))] = $Value;
+			unset($array[$Key]);
+		}
+	}
+}
+
 ?>
