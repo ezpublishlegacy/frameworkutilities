@@ -37,7 +37,7 @@ class PersistentObject
 			if(property_exists($this, $attributeName)){
 				$attributeValue=$this->$attributeName;
 			}
-			if(isset($datatype)){
+			if(isset($datatype) && $datatype!='mixed'){
 				settype($attributeValue,$datatype);
 			}
 			return $attributeValue;
