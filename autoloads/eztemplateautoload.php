@@ -19,11 +19,12 @@ if(!function_exists('array_swap')){
 if(!function_exists('array_key_pascal_case')){
 	function array_key_pascal_case(&$array){
 		if($array){
-			$Values = array_values($array);
+			$Result = array();
 			foreach($array as $Key=>$Value){
-				$Keys[] = str_replace(' ', '', ucwords(str_replace('_', ' ', $Key)));
+				$Key = str_replace(' ', '', ucwords(str_replace('_', ' ', $Key)));
+				$Result[$Key] = $Value;
 			}
-			$array = array_combine($Keys, $Values);
+			$array = $Result;
 		}
 	}
 }
