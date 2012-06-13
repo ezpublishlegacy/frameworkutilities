@@ -19,23 +19,39 @@ class IsOperator
 	function namedParameterList(){
 		return array(
 			'is'=>array(
-				'className'=>array('type'=>'mixed', 'required'=>true, 'default'=>false)
+				'className'=>array('type'=>'mixed', 'required'=>true, 'default'=>false),
+				'descendant'=>array('type'=>'boolean', 'required'=>false, 'default'=>false)
 			)
 		);
 	}
 
 	function modify(&$tpl, &$operatorName, &$operatorParameters, &$rootNamespace, &$currentNamespace, &$operatorValue, &$namedParameters){
 		if(is_string($namedParameters['className'])){
-			$namedParameters['className']=array($namedParameters['className']);
+			$namedParameters['className']=preg_split('/\s*,\s*/', $namedParameters['className']);
 		}else if(!is_array($namedParameters['className'])){
 			$ClassNameType=gettype($namedParameters['className']);
 			eZDebug::writeError("The datatype [$ClassNameType] is invalid for className. Valid datatypes are array and string.",'Invalid Class Name Datatype');
 			$operatorValue=false;
 			return false;
 		}
-		$operatorValue=in_array($operatorValue->classIdentifier(), $namedParameters['className']);
+		$is=self::is($operatorValue, $namedParameters['className']);
+		if(!$is && $namedParameters['descendant']){
+			$PathArray = array_reverse($operatorValue->pathArray());
+			array_shift($PathArray);
+			foreach($PathArray as $Item){
+				if($is = self::is(eZContentObjectTreeNode::fetch($Item), $namedParameters['className'])){
+					break;
+				}
+			}
+		}
+		$operatorValue = $is;
 		return true;
 	}
+
+	static function is(eZContentObjectTreeNode $object, $identifier){
+		return in_array($object->classIdentifier(), $identifier);
+	}
+
 }
 
 ?>
