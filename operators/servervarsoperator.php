@@ -5,7 +5,7 @@ class ServerVarsOperator
 	var $Operators;
 
 	function __construct(){
-		$this->Operators=array('servervars', 'postvars', 'getvars');
+		$this->Operators=array('servervars', 'postvars', 'getvars','ezservervars', 'ezpostvars', 'ezgetvars');
 	}
 
 	function &operatorList(){
@@ -22,11 +22,11 @@ class ServerVarsOperator
 
 	function modify(&$tpl, &$operatorName, &$operatorParameters, &$rootNamespace, &$currentNamespace, &$operatorValue, &$namedParameters){
 		switch($operatorName){
-			case 'postvars':{
+			case 'postvars'||'ezpostvars':{
 				$operatorValue=$_POST;
 				break;
 			}
-			case 'getvars':{
+			case 'getvars'||'ezgetvars':{
 				$operatorValue=$_GET;
 				break;
 			}
