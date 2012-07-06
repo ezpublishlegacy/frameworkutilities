@@ -22,17 +22,16 @@ class ServerVarsOperator
 
 	function modify(&$tpl, &$operatorName, &$operatorParameters, &$rootNamespace, &$currentNamespace, &$operatorValue, &$namedParameters){
 		switch($operatorName){
-			case 'postvars'||'ezpostvars':{
+			case 'postvars':
+			case 'ezpostvars':
 				$operatorValue=$_POST;
 				break;
-			}
-			case 'getvars'||'ezgetvars':{
+			case 'getvars':
+			case 'ezgetvars':
 				$operatorValue=$_GET;
 				break;
-			}
-			default:{
+			default:
 				$operatorValue=$_SERVER;
-			}
 		}
 		return false;
 	}
