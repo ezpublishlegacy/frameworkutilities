@@ -13,11 +13,11 @@ class ServerVarsOperator
 	}
 
 	function namedParameterPerOperator(){
-		return false;
+		return array();
 	}
 
 	function namedParameterList(){
-		return false;
+		return array();
 	}
 
 	function modify(&$tpl, &$operatorName, &$operatorParameters, &$rootNamespace, &$currentNamespace, &$operatorValue, &$namedParameters){
