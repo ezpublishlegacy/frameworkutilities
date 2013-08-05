@@ -5,7 +5,7 @@ class PregReplaceOperator
 	var $Operators;
 
 	function PregReplaceOperator(){
-		$this->Operators=array('preg_replace');
+		$this->Operators=array('preg_replace', 'preg_match');
 	}
 
 	function &operatorList(){
@@ -21,12 +21,20 @@ class PregReplaceOperator
 			'preg_replace'=>array(
 				'search'=>array('type'=>'string', 'required'=>true, 'default'=>false),
 				'replace'=>array('type'=>'string', 'required'=>true, 'default'=>false)
-			)
+			),
+			'preg_match'=>array(
+				'search'=>array('type'=>'string', 'required'=>true, 'default'=>false),
+			),
 		);
 	}
 
 	function modify(&$tpl, &$operatorName, &$operatorParameters, &$rootNamespace, &$currentNamespace, &$operatorValue, &$namedParameters){
-		$operatorValue=preg_replace($namedParameters['search'], $namedParameters['replace'], $operatorValue);
+		if ($operatorName == 'preg_match') {
+			preg_match_all($namedParameters['search'], $operatorValue, $matches);
+			$operatorValue=$matches;
+		} else {
+			$operatorValue=preg_replace($namedParameters['search'], $namedParameters['replace'], $operatorValue);
+		}
 		return true;
 	}
 }
