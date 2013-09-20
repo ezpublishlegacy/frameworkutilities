@@ -3,4 +3,7 @@
 [TemplateSettings]
 ExtensionAutoloadPath[]=frameworkutilities
 
+[SearchSettings]
+LogSearchStats=disabled
+
 */ ?>
