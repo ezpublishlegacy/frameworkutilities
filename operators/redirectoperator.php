@@ -31,7 +31,8 @@ class RedirectOperator
 			$operatorValue=rtrim(eZSys::indexDir(),'/').'/'.ltrim($operatorValue, '/');
 		}
 		// redirect to redirect URI by returning given status code and exit.
-		eZHTTPTool::redirect($operatorValue, array(), $namedParameters['status']);
+		echo "<script type='text/javascript'>document.location.href='$operatorValue';</script>";
+
 		eZExecution::cleanExit();
 	}
 }
