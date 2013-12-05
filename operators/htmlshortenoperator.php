@@ -35,8 +35,6 @@ class HTMLShortenOperator
 		$operatorValue = preg_replace("/^\s*</mus", "<", $operatorValue);
 		$operatorValue = preg_replace("/>\s*</mus", "><", $operatorValue);
 		$operatorValue = preg_replace("/\n|\r/mus", " ", $operatorValue);
-		
-		eZDebug::writeDebug($operatorValue);
 
 		$SaveTemp=$operatorValue;
 		$SaveTemp2=$operatorValue;
