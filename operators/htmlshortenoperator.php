@@ -29,6 +29,15 @@ class HTMLShortenOperator
 		if(!in_array(mb_detect_encoding($operatorValue), array('ISO-8859-1', 'UTF-8'))){
 			$operatorValue=iconv(mb_detect_encoding($operatorValue), "ISO-8859-1//TRANSLIT", $operatorValue);
 		}
+		preg_replace('/[ \t]+/s', ' ', preg_replace('/[\r\n]+/s', "\n", $operatorValue));
+		
+		
+		$operatorValue = preg_replace("/^\s*</mus", "<", $operatorValue);
+		$operatorValue = preg_replace("/>\s*</mus", "><", $operatorValue);
+		$operatorValue = preg_replace("/\n|\r/mus", " ", $operatorValue);
+		
+		eZDebug::writeDebug($operatorValue);
+
 		$SaveTemp=$operatorValue;
 		$SaveTemp2=$operatorValue;
 		preg_match_all("/<[^>]*?>/", $SaveTemp, $TagMatches);
