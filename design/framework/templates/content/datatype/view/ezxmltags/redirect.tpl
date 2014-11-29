@@ -8,5 +8,5 @@
 	{def $child_id  = false()}
 {/if}
 {if or(eq($child_id, false()), eq($child_id, $main_node))}
-	<script type='text/javascript'>document.location.href='{$redirect_url}';</script>
+    {concat("location: ", $redirect_url)|header()}
 {/if}
