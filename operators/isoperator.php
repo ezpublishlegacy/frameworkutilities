@@ -34,6 +34,10 @@ class IsOperator
 			$operatorValue=false;
 			return false;
 		}
+		if (!is_object($operatorValue)) {
+		    $operatorValue = false;
+		    return false;
+		}
 		$is=self::is($operatorValue, $namedParameters['className']);
 		if(!$is && $namedParameters['descendant']){
 			$PathArray = array_reverse($operatorValue->pathArray());
